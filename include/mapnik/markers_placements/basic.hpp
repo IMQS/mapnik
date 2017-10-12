@@ -45,6 +45,7 @@ struct markers_placement_params
     double max_error;
     bool allow_overlap;
     bool avoid_edges;
+    bool start_center;
     direction_enum direction;
 };
 

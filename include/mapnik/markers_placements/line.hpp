@@ -44,7 +44,8 @@ public:
             first_point_(true),
             spacing_(0.0),
             marker_width_((params.size * params.tr).width()),
-            path_(locator)
+            path_(locator),
+            start_center_(params.start_center)
     {
         spacing_ = params.spacing < 1 ? 100 : params.spacing;
     }
@@ -77,7 +78,14 @@ public:
                 return false;
             }
             first_point_ = false;
-            move = spacing_ / 2.0;
+			if (start_center_)
+			{
+				move = path_.length() / 2.0;
+			}
+			else
+			{
+				move = spacing_ / 2.0;
+			}
         }
 
         while (path_.forward(move))
@@ -112,6 +120,7 @@ public:
 
 private:
     bool first_point_;
+    bool start_center_;
     double spacing_;
     double marker_width_;
     vertex_cache path_;

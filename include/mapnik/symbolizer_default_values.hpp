@@ -341,6 +341,13 @@ struct symbolizer_default<direction_enum, keys::direction>
     static direction_enum value() { return DIRECTION_RIGHT; }
 };
 
+// start-center
+template <>
+struct symbolizer_default<value_bool, keys::start_center>
+{
+    static value_bool value() { return false; }
+};
+
 // placement
 
 // colorizer
